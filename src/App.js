@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Navbar, Form, Button, Container, Card } from 'react-bootstrap'
 
 class App extends React.Component{
   constructor(props){
@@ -36,20 +37,53 @@ class App extends React.Component{
     console.log('state', this.state)
     return(
       <>
-        <form onSubmit={this.getLocationInfo} >
-          <input onChange={(e) => this.setState({ searchQuery: e.target.value })}  placeholder="city"/>
-          <button type="submit">explore!</button>
-        </form>
-        <h1>Welcome</h1>
-
-        {this.state.displayResults &&
-          <>
-            <h2>{this.state.location.display_name}</h2>
-            <p>Longitude: {this.state.long}</p>
-            <p>Latitude: {this.state.lati}</p>
-            <img src={this.state.imgSrc} />
-          </>
-        }
+        <Navbar>
+          <Container>
+            <Navbar.Brand href="#home">City Explorer</Navbar.Brand>
+            <Navbar.Toggle />
+            <Navbar.Collapse className="justify-content-end">
+              <Navbar.Text>
+                Created by: <a href="#login">Mason Aviles</a>
+              </Navbar.Text>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+        <Container>
+          <h1>Welcome</h1>
+          <Container>
+            <Form onSubmit={this.getLocationInfo} >
+              <Form.Group controlId="">
+                <Form.Control type="text" placeholder="search for a city here" onChange={(e) => this.setState({ searchQuery: e.target.value })} />
+                <Form.Text className="text-muted">
+                  Where do you want to go?
+                </Form.Text>
+              </Form.Group>
+              <Button variant="primary" type="submit">
+                Explore!
+              </Button>
+            </Form>
+          </Container>
+          {this.state.displayResults &&
+            <>
+              {/* <h2>{this.state.location.display_name}</h2>
+              <p>Longitude: {this.state.long}</p>
+              <p>Latitude: {this.state.lati}</p>
+              <img src={this.state.imgSrc} /> */}
+              <Container>
+                <Card className="mt-4">
+                  <Card.Header as="h5">{this.state.location.display_name}</Card.Header>
+                  <Card.Body>
+                    <Card.Text>
+                      <p>Longitude: {this.state.long}</p>
+                      <p>Latitude: {this.state.lati}</p>
+                    </Card.Text>
+                  </Card.Body>
+                  <Card.Img variant="bottom" src={this.state.imgSrc} />
+                </Card>
+              </Container>
+            </>
+          }
+        </Container>
       </>
     )
   }
