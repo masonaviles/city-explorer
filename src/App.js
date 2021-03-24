@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import { Navbar, Form, Button, Container, Card } from 'react-bootstrap'
+import { Navbar, Form, Button, Container, Card, Col } from 'react-bootstrap'
+import Weather from './weather';
 
 class App extends React.Component{
   constructor(props){
@@ -9,18 +10,8 @@ class App extends React.Component{
       location:{},
       searchQuery: '',
       imgSrc: '',
-      displayResults: false,
-      list: []
+      displayResults: false
     }
-    // console.log('constructor');
-  }
-
-  componentDidMount = async() => {
-    const SERVER = 'http://localhost:3001';
-    const weather = await axios.get(`${SERVER}/weather`);
-    const weatherData = weather.data;
-    console.log({weatherData});
-    this.setState({ list: weatherData });
   }
 
   getLocationInfo = async(e) => {
@@ -33,17 +24,18 @@ class App extends React.Component{
         location: locationArray[0], 
         displayResults: true,
         imgSrc: `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_KEY}&center=${locationArray[0].lat},${locationArray[0].lon}&zoom=13`,
-        long: locationArray[0].lon,
-        lati: locationArray[0].lat
+        lon: locationArray[0].lon,
+        lat: locationArray[0].lat
       });
-    } catch (e) {
-      console.log(`😱 Axios request failed: ${e}`);
+    } catch (error) {
+      console.log(`😱 Axios request failed: ${error}`);
     }
   }
 
 
   render() {
-    console.log('state', this.state)
+    console.log('state', this.state);
+    console.log('test weather obj', this.state.weather);
     return(
       <>
         <Navbar>
@@ -59,44 +51,47 @@ class App extends React.Component{
         </Navbar>
         <Container>
           <h1>Welcome</h1>
-          {/* {this.state.list.map((item, index) => (
-            <div key={index}>
-              {item}
-            </div>
-          ))} */}
-          <Container>
-            <Form onSubmit={this.getLocationInfo} >
-              <Form.Group controlId="">
-                <Form.Control type="text" placeholder="search for a city here" onChange={(e) => this.setState({ searchQuery: e.target.value })} />
-                <Form.Text className="text-muted">
-                  Where do you want to go?
-                </Form.Text>
-              </Form.Group>
-              <Button variant="primary" type="submit">
-                Explore!
-              </Button>
-            </Form>
-          </Container>
-          {this.state.displayResults &&
-            <>
-              {/* <h2>{this.state.location.display_name}</h2>
-              <p>Longitude: {this.state.long}</p>
-              <p>Latitude: {this.state.lati}</p>
-              <img src={this.state.imgSrc} /> */}
-              <Container>
-                <Card className="mt-4">
-                  <Card.Header as="h5">{this.state.location.display_name}</Card.Header>
-                  <Card.Body>
-                    <Card.Text>
-                      <p>Longitude: {this.state.long}</p>
-                      <p>Latitude: {this.state.lati}</p>
-                    </Card.Text>
-                  </Card.Body>
-                  <Card.Img variant="bottom" src={this.state.imgSrc} />
-                </Card>
-              </Container>
-            </>
-          }
+          <Col>
+            <Weather
+              lon={this.props.lon}
+              lat={this.props.lat}
+            />
+          </Col>
+          <Col>
+            <Container>
+              <Form onSubmit={this.getLocationInfo} >
+                <Form.Group controlId="">
+                  <Form.Control type="text" placeholder="search for a city here" onChange={(e) => this.setState({ searchQuery: e.target.value })} />
+                  <Form.Text className="text-muted">
+                    Where do you want to go?
+                  </Form.Text>
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                  Explore!
+                </Button>
+              </Form>
+            </Container>
+            {this.state.displayResults &&
+              <>
+                {/* <h2>{this.state.location.display_name}</h2>
+                <p>Longitude: {this.state.long}</p>
+                <p>Latitude: {this.state.lati}</p>
+                <img src={this.state.imgSrc} /> */}
+                <Container>
+                  <Card className="mt-4">
+                    <Card.Header as="h5">{this.state.location.display_name}</Card.Header>
+                    <Card.Body>
+                      <Card.Text>
+                        <p>Longitude: {this.state.lon}</p>
+                        <p>Latitude: {this.state.lat}</p>
+                      </Card.Text>
+                    </Card.Body>
+                    <Card.Img variant="bottom" src={this.state.imgSrc} />
+                  </Card>
+                </Container>
+              </>
+            }
+          </Col>
         </Container>
       </>
     )
