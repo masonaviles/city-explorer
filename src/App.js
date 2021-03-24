@@ -9,9 +9,18 @@ class App extends React.Component{
       location:{},
       searchQuery: '',
       imgSrc: '',
-      displayResults: false
+      displayResults: false,
+      list: []
     }
     // console.log('constructor');
+  }
+
+  componentDidMount = async() => {
+    const SERVER = 'http://localhost:3001';
+    const weather = await axios.get(`${SERVER}/weather`);
+    const weatherData = weather.data;
+    console.log({weatherData});
+    this.setState({ list: weatherData });
   }
 
   getLocationInfo = async(e) => {
@@ -50,6 +59,11 @@ class App extends React.Component{
         </Navbar>
         <Container>
           <h1>Welcome</h1>
+          {/* {this.state.list.map((item, index) => (
+            <div key={index}>
+              {item}
+            </div>
+          ))} */}
           <Container>
             <Form onSubmit={this.getLocationInfo} >
               <Form.Group controlId="">
