@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Container, Form, Button, Card, Col } from 'react-bootstrap'
+import { Container, Form, Button, Col } from 'react-bootstrap'
 import NavHeader from './nav';
 import Weather from './weather';
 import Map from './map';
