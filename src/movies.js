@@ -1,14 +1,7 @@
 import React from 'react';
 import { ListGroup, Accordion, Card, Button } from 'react-bootstrap'
 
-class Weather extends React.Component {
-
-  // constructor(props){
-  //   super(props);
-  //   this.state={
-  //     weather:[]
-  //   }
-  // }
+class Movies extends React.Component {
 
   render() {
     return(
@@ -17,18 +10,14 @@ class Weather extends React.Component {
           <Card>
             <Card.Header>
               <Accordion.Toggle as={Button} variant="info" eventKey="0">
-                View Weather Forecast
+                View Movies
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="0">
-              <Card.Body>{this.props.weather.map((value, key) => (
+              <Card.Body>{this.props.movies.map((value, key) => (
                 <ListGroup key={key}>
-                  <ListGroup.Item variant="info">{value.date}  {value.description}</ListGroup.Item>
+                  <ListGroup.Item variant="info">{value.title}  {value.overview}</ListGroup.Item>
                 </ListGroup>
-                
-                // <div key={key}>
-                //   <h4>{value.date}  {value.desc}</h4>
-                // </div>
                 ))}
               </Card.Body>
             </Accordion.Collapse>
@@ -40,4 +29,4 @@ class Weather extends React.Component {
   }
 }
 
-export default Weather;
+export default Movies;

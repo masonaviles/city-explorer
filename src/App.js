@@ -4,6 +4,7 @@ import { Container, Form, Button, Col } from 'react-bootstrap'
 import NavHeader from './nav';
 import Weather from './weather';
 import Map from './map';
+import Movies from './movies';
 
 class App extends React.Component {
 
@@ -14,7 +15,8 @@ class App extends React.Component {
       searchQuery: '',
       imgSrc: '',
       displayResults: false,
-      weather: []
+      weather: [],
+      movieArray: []
     }
   }
 
@@ -51,6 +53,19 @@ class App extends React.Component {
     }
   }
 
+  getMovie = async (location) => {
+    try{
+      console.log('inside of getMovie');
+      const movies = await axios.get(`${process.env.REACT_APP_SERVER}/movies`, { params: {city: this.state.searchQuery}});
+
+      console.log('movie data', movies.data);
+      this.setState({ movieArray: movies.data });
+
+    } catch(err){
+      console.log(err);
+    }
+  }
+
   render() {
     return (
       <>
@@ -59,6 +74,9 @@ class App extends React.Component {
           <h1>Welcome</h1>
           <Col>
             <Weather weather={this.state.weather}/>
+          </Col>
+          <Col>
+            <Movies movies={this.state.movieArray}/>
           </Col>
           <Col>
             <Container>
