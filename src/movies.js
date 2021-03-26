@@ -14,7 +14,7 @@ class Movies extends React.Component {
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="0">
-              <Card.Body>{this.props.movies.map((value, key) => (
+              <Card.Body>{this.props.movies.slice(0,5).map((value, key) => (
                 <ListGroup key={key}>
                   <ListGroup.Item variant="info">{value.title}  {value.overview}</ListGroup.Item>
                 </ListGroup>

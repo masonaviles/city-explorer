@@ -35,6 +35,8 @@ class App extends React.Component {
       });
       // pass data into weather
       this.getWeather(locationArray[0]);
+      // pass data into movies
+      this.getMovie(locationArray[0]);
     } catch (error) {
       console.log(`😱 Axios request failed: ${error}`);
     }
@@ -53,7 +55,7 @@ class App extends React.Component {
     }
   }
 
-  getMovie = async (location) => {
+  getMovie = async () => {
     try{
       console.log('inside of getMovie');
       const movies = await axios.get(`${process.env.REACT_APP_SERVER}/movies`, { params: {city: this.state.searchQuery}});
