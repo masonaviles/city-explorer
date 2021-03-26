@@ -13,7 +13,8 @@ class App extends React.Component {
       location: {},
       searchQuery: '',
       imgSrc: '',
-      displayResults: false
+      displayResults: false,
+      weather: []
     }
   }
 
@@ -30,8 +31,23 @@ class App extends React.Component {
         lon: locationArray[0].lon,
         lat: locationArray[0].lat
       });
+      // pass data into weather
+      this.getWeather(locationArray[0]);
     } catch (error) {
       console.log(`😱 Axios request failed: ${error}`);
+    }
+  }
+
+  getWeather = async (location) => {
+    try{
+      console.log('inside of getWeather', location);
+      const weather = await axios.get(`${process.env.REACT_APP_SERVER}/weather`, { params: {latitude: location.lat, longitude: location.lon}});
+
+      console.log('weather data', weather.data);
+      this.setState({ weather: weather.data });
+
+    } catch(err){
+      console.log(err);
     }
   }
 

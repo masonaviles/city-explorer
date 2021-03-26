@@ -7,18 +7,8 @@ class Weather extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      list:[],
-      error: false
+      weather:[]
     }
-  }
-
-  componentDidMount = async() => {
-    const SERVER = 'http://localhost:3001';
-    const weather = await axios.get(`${SERVER}/weather/`);
-    const weatherArray = weather.data;
-    console.log(weatherArray);
-    console.log("newArray=", weather.data);
-    this.setState({ list: weatherArray });
   }
 
   render() {
@@ -32,7 +22,7 @@ class Weather extends React.Component {
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="0">
-              <Card.Body>{this.state.list.map((value, key) => (
+              <Card.Body>{this.state.weather.map((value, key) => (
                 <ListGroup key={key}>
                   <ListGroup.Item variant="info">{value.date}  {value.desc}</ListGroup.Item>
                 </ListGroup>
