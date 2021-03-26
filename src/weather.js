@@ -1,6 +1,6 @@
 import React from 'react';
 import DailyWeather from './dailyWeather'
-import { ListGroup, Accordion, Card, Button } from 'react-bootstrap'
+import { Accordion, Card, Button } from 'react-bootstrap'
 
 class Weather extends React.Component {
 
