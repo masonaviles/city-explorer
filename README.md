@@ -20,41 +20,41 @@ A React App that uses various API's to serve city information based off search q
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
 
-Name of feature: Lab 06 Locations
-Estimate of time needed to complete: 60 minutes
-Start time: 2:15pm
-Finish time: 3:16pm
-Actual time needed to complete: 61 minutes
+- Name of feature: Lab 06 Locations
+- Estimate of time needed to complete: 60 minutes
+- Start time: 2:15pm
+- Finish time: 3:16pm
+- Actual time needed to complete: 61 minutes
 
-Name of feature: Lab 06 Map
-Estimate of time needed to complete: 30 minutes
-Start time: 3:18pm
-Finish time: 3:26pm
-Actual time needed to complete: 8 minutes
+- Name of feature: Lab 06 Map
+- Estimate of time needed to complete: 30 minutes
+- Start time: 3:18pm
+- Finish time: 3:26pm
+- Actual time needed to complete: 8 minutes
 
-Name of feature: Lab 06 Errors
-Estimate of time needed to complete: 60 minutes
-Start time: 3:55pm
-Finish time: 9:37pm - not fully completed. can't get error message to show
-Actual time needed to complete: 2 hours - split between a few start and stop times
+- Name of feature: Lab 06 Errors
+- Estimate of time needed to complete: 60 minutes
+- Start time: 3:55pm
+- Finish time: 9:37pm - not fully completed. can't get error message to show
+- Actual time needed to complete: 2 hours - split between a few start and stop times
 
-Name of feature: Lab 07 Front-end
-Estimate of time needed to complete: 2 hrs
-Start time: 8:05pm
-Finish time: 9:39pm
-Actual time needed to complete: 1 hour 34 minutes
+- Name of feature: Lab 07 Front-end
+- Estimate of time needed to complete: 2 hrs
+- Start time: 8:05pm
+- Finish time: 9:39pm
+- Actual time needed to complete: 1 hour 34 minutes
 
-Name of feature: Lab 08 Movies Front-end
-Estimate of time needed to complete: 2 hrs
-Start time: 1:40 pm
-Finish time: 4:00 pm
-Actual time needed to complete: 2 hrs 20minutes
+- Name of feature: Lab 08 Movies Front-end
+- Estimate of time needed to complete: 2 hrs
+- Start time: 1:40 pm
+- Finish time: 4:00 pm
+- Actual time needed to complete: 2 hrs 20minutes
 
-Name of feature: Lab 09 Movies Front-end
-Estimate of time needed to complete: 2 hrs
-Start time: 9:50 pm
-Finish time: 10:29 pm
-Actual time needed to complete: 39minutes
+- Name of feature: Lab 09 Movies Front-end
+- Estimate of time needed to complete: 2 hrs
+- Start time: 9:50 pm
+- Finish time: 10:29 pm
+- Actual time needed to complete: 39minutes
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
