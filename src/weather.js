@@ -4,13 +4,6 @@ import { Accordion, Card, Button } from 'react-bootstrap'
 
 class Weather extends React.Component {
 
-  // constructor(props){
-  //   super(props);
-  //   this.state={
-  //     weather:[]
-  //   }
-  // }
-
   render() {
     return(
       <>
