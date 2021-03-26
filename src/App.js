@@ -58,7 +58,7 @@ class App extends React.Component {
         <Container>
           <h1>Welcome</h1>
           <Col>
-            <Weather />
+            <Weather weather={this.state.weather}/>
           </Col>
           <Col>
             <Container>

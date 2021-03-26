@@ -4,12 +4,12 @@ import { ListGroup, Accordion, Card, Button } from 'react-bootstrap'
 
 class Weather extends React.Component {
 
-  constructor(props){
-    super(props);
-    this.state={
-      weather:[]
-    }
-  }
+  // constructor(props){
+  //   super(props);
+  //   this.state={
+  //     weather:[]
+  //   }
+  // }
 
   render() {
     return(
@@ -22,9 +22,9 @@ class Weather extends React.Component {
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="0">
-              <Card.Body>{this.state.weather.map((value, key) => (
+              <Card.Body>{this.props.weather.map((value, key) => (
                 <ListGroup key={key}>
-                  <ListGroup.Item variant="info">{value.date}  {value.desc}</ListGroup.Item>
+                  <ListGroup.Item variant="info">{value.date}  {value.description}</ListGroup.Item>
                 </ListGroup>
                 
                 // <div key={key}>
