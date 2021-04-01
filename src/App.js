@@ -15,7 +15,7 @@ class App extends React.Component {
       searchQuery: '',
       imgSrc: '',
       displayResults: false,
-      weather: [],
+      weatherArray: [],
       movieArray: []
     }
   }
@@ -36,7 +36,8 @@ class App extends React.Component {
       // pass data into weather
       this.getWeather(locationArray[0]);
       // pass data into movies
-      this.getMovie(locationArray[0]);
+      this.getMovie();
+      // this.getMovie(locationArray[0]);
     } catch (error) {
       console.log(`😱 Axios request failed: ${error}`);
     }
@@ -44,11 +45,12 @@ class App extends React.Component {
 
   getWeather = async (location) => {
     try{
-      console.log('inside of getWeather', location);
-      const weather = await axios.get(`${process.env.REACT_APP_SERVER}/weather`, { params: {latitude: location.lat, longitude: location.lon}});
-
-      console.log('weather data', weather.data);
-      this.setState({ weather: weather.data });
+      const weather = await axios.get(`${process.env.REACT_APP_SERVER}/weather`, { params: {lat: location.lat, lon: location.lon}});
+      // console.log('weather data: ', weather.data);
+      this.setState({ 
+        weatherArray: weather.data,
+        displayResults: true
+      });
 
     } catch(err){
       console.log(err);
@@ -57,11 +59,13 @@ class App extends React.Component {
 
   getMovie = async () => {
     try{
-      console.log('inside of getMovie');
+      console.log('here in getmovie');
       const movies = await axios.get(`${process.env.REACT_APP_SERVER}/movies`, { params: {city: this.state.searchQuery}});
-
-      console.log('movie data', movies.data);
-      this.setState({ movieArray: movies.data });
+      console.log('movie data: ', movies.data);
+      this.setState({ 
+        movieArray: movies.data,
+        displayResults: true
+      });
 
     } catch(err){
       console.log(err);
@@ -75,7 +79,7 @@ class App extends React.Component {
         <Container>
           <h1>Welcome</h1>
           <Col>
-            <Weather weather={this.state.weather}/>
+            <Weather weather={this.state.weatherArray}/>
           </Col>
           <Col>
             <Movies movies={this.state.movieArray}/>

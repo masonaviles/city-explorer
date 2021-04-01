@@ -16,7 +16,10 @@ class Weather extends React.Component {
             </Card.Header>
             <Accordion.Collapse eventKey="0">
               <Card.Body>
-                <DailyWeather data = {this.props.weather} />
+              {this.props.weather.map((element, index) => (
+                <DailyWeather key={index} date={element.date} description={element.description} />
+              ))}
+                {/* <DailyWeather weather={this.props.weather} /> */}
               {/* {this.props.weather.map((value, key) => (
                 <ListGroup key={key}>
                   <ListGroup.Item variant="info">{value.date}  {value.description}</ListGroup.Item>
